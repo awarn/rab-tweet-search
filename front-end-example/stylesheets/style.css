@@ -1,0 +1,13 @@
+body {
+	padding: 15px 30px;
+	font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+ 	color: #00B7FF;
+ 	text-decoration: none;
+}
+
+ul, li {
+	list-style-type: none;
+}

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Twitter search</title>
+
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="/stylesheets/style.css" />
+		<link rel="stylesheet" type="text/css" href="/stylesheets/rab.css" />
+
+		<script type="text/javascript" src="/js/rabApp.js" ></script>
+		<script type="text/javascript" src="/js/rab.js" ></script>
+	</head>
+	<body>
+		<section>
+
+			<h1>Twitter search</h1>
+			<p>Search against the Twitter API through a Node.js app hosted in Heroku.</p>
+
+			<form id="search-form" onsubmit="return false">
+				<p>
+					<label for="search-text" >Search for a specific hashtag or whatever:</label>
+				</p>
+				<p>
+					<input type="search" id="search-text" placeholder="#hashtag" />
+				</p>
+				<p>
+					<input type="submit" id="search-submit" value="Submit" />
+				</p>
+			</form>
+
+			<section id="search-results" >
+				<p id="search-error-report" ></p>
+
+				<h3>The latest 10 tweets on that subject below this</h3>
+				<ul id="tweet-list" >
+				</ul>
+			</section>
+
+		</section>
+	</body>
+</html>

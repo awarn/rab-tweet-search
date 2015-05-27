@@ -1,0 +1,47 @@
+
+#search-form input {
+	width: 100%;
+	max-width: 600px;
+	font-size: 20px;
+}
+
+#search-form input[type="submit"] {
+	padding: 5px;
+	border: none;
+	color: white;
+	background-color: #d87da8;
+}
+
+#search-error-report {
+	color: #FADA5E;
+}
+
+#tweet-list {
+	max-width: 600px;
+	padding: 0px;
+	list-style-type: none;
+}
+
+#tweet-list li {
+	padding: 10px;
+	border-bottom: solid 2px black;
+}
+#tweet-list li:nth-of-type(even) {
+	background-color: #dde;
+}
+
+#tweet-list li .tweet-author-name {
+	margin: 5px 0px
+}
+
+#tweet-list li .tweet-author-screen_name {
+	margin: 0px;
+}
+
+#tweet-list li .tweet-text {
+	margin: 7px 20px;
+}
+
+#tweet-list li .tweet-created-at {
+	float: right;
+}
