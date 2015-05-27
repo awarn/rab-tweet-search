@@ -1,3 +1,3 @@
 # rab-tweet-retr
 
-A simple Node.js app for searching through Twitter API.
+A simple Node.js app for searching through the Twitter API.
