@@ -75,7 +75,7 @@ router.get('/search', Cors(), function(req, res, next) {
     res.setHeader('Content-Type', 'application/json');
     res.jsonp(tweets);
   }).catch(function(error) {
-    console.log("error getting tweets: " + error);
+    res.setHeader('Content-Type', 'application/json');
     res.jsonp({ "error": error });
   });
 
