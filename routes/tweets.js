@@ -30,12 +30,12 @@ var corsOptions = {
 function twitterSearchAsync(search, options) {
 
   return new Promise(function(resolve,reject){
-
     twitterClient.get('search/tweets', 
       {q: search, result_type: options.result_type, count: options.count}, 
       function(error, tweets, response){
 
         if(error) {
+          console.log(error);
           reject(error);
         }
 
@@ -76,7 +76,7 @@ router.get('/search', Cors(), function(req, res, next) {
     res.jsonp(tweets);
   }).catch(function(error) {
     console.log("error getting tweets: " + error);
-    res.send("error getting tweets: " + error);
+    res.jsonp({ "error": error });
   });
 
 });
