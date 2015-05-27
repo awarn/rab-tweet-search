@@ -19,8 +19,8 @@ var twitterClient = new Twitter({
 var whitelist = ['http://awarnhag.se'];
 var corsOptions = {
   origin: function(origin, callback){
-    //var originIsWhitelisted = whitelist.indexOf(origin) !== -1;
-    var originIsWhitelisted = true;
+    var originIsWhitelisted = whitelist.indexOf(origin) !== -1;
+    //var originIsWhitelisted = true;
     callback(null, originIsWhitelisted);
   }
 };
@@ -31,17 +31,20 @@ function twitterSearchAsync(search, options) {
 
   return new Promise(function(resolve,reject){
 
-    twitterClient.get('search/tweets', {q: search}, function(error, tweets, response){
+    twitterClient.get('search/tweets', 
+      {q: search, result_type: options.result_type, count: options.count}, 
+      function(error, tweets, response){
 
-      if(error) {
-        reject(error);
-      }
+        if(error) {
+          reject(error);
+        }
 
-      if(tweets) {
-        resolve(tweets);
-      }
+        if(tweets) {
+          resolve(tweets);
+        }
       
-    });
+      }
+    );
 
   });
 }
@@ -56,13 +59,19 @@ function search(q) {
 /* GET Search for tweets */
 router.get('/search', Cors(), function(req, res, next) {
 
+  // Taking care of GET paramaters
   var query = URL.parse(req.url, true).query;
+
+  // The search term.
   var q = query.q;
 
-  console.log(query.q);
+  // Handling some options for the search.
+  var options = {};
+  options.result_type = query.result_type ? query.result_type : "recent";
+  options.count = query.count ? query.count : 10;
 
   // Send search request and wait for promise.
-  twitterSearchAsync(q, {}).then(function(tweets) {
+  twitterSearchAsync(q, options).then(function(tweets) {
     res.setHeader('Content-Type', 'application/json');
     res.jsonp(tweets);
   }).catch(function(error) {
